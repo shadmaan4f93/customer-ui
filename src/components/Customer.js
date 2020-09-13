@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch , useSelector} from "react-redux";
+import moment from "moment";
 import SweetAlert from 'sweetalert-react';
 import DataTable from 'react-data-table-component';
 import {getCustomer, deleteCustomer} from "../redux/actions"
@@ -51,7 +52,7 @@ export default function Customer(props) {
 						email: prop["email"],
 						phone: prop["phone"],
 						address: prop["address"],
-						created_at: prop["created_at"],
+						created_at: moment(prop["created_at"]).format("LL"),
 						actions: (
 							<div className="action-button">
 								<button className="btn btn-secondary btn-sm" style={{marginRight: "5px"}}

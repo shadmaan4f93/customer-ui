@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch , useSelector} from "react-redux";
-
+import moment from "moment";
 import {getCustomerById} from "../redux/actions"
 
 export default function CustomerDetail(props) {
@@ -41,7 +41,7 @@ export default function CustomerDetail(props) {
                 <span>Phone: {state.phone}</span>
               </div>
               <div className="col-sm-6">
-                <span>Created Date: {state.created_at}</span>
+                <span>Created Date: {`${moment(state.created_at).format("LLLL")}`}</span>
               </div>
               <div className="col-sm-6">
                 <span>Address: {state.address}</span>

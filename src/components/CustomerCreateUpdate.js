@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import SweetAlert from 'sweetalert-react';
 import {postCustomer, putCustomer} from "../redux/actions"
 import TextField from '@material-ui/core/TextField';
-import {EmailRegex} from "../utility/Regex"
+import {EmailRegex,PhoneRegex,StringRegex} from "../utility/Regex"
 
 import 'sweetalert/dist/sweetalert.css';
 
@@ -53,7 +53,11 @@ export default function CustomerCreateUpdate({history, formData,buttonText, onCl
     let error;
     switch (name) {
       case "name":
-      case "phone":
+        if(!value || !StringRegex.test(value)){
+          isValid=false;
+          error="[a-z] [A-Z]"
+        }
+        break;
       case "address":
         if(!value){
           isValid=false;
@@ -65,6 +69,11 @@ export default function CustomerCreateUpdate({history, formData,buttonText, onCl
         error="format: someone@example.com"
       }
       break;
+      case "phone":
+        if(!value || !PhoneRegex.test(value)){
+          isValid=false;
+          error="10-16 digit number."
+        }
       default:
         break;
     }
@@ -139,7 +148,7 @@ export default function CustomerCreateUpdate({history, formData,buttonText, onCl
           label="Name"
           helperText={formHelperText.name}
           onChange = {formInputHandler}
-          error={customerTouched.name && !customerState.name}
+          error={customerTouched.name && (!customerState.name||!StringRegex.test(customerState.name))}
         />
         <TextField
           required
@@ -161,7 +170,7 @@ export default function CustomerCreateUpdate({history, formData,buttonText, onCl
           label="Phone"
           helperText={formHelperText.phone}
           onChange = {formInputHandler}
-          error={customerTouched.phone && !customerState.phone}
+          error={customerTouched.phone && (!PhoneRegex.test(customerState.phone)||!customerState.phone)}
         />
         <TextField
           required
