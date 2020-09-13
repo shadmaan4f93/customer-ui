@@ -1,24 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route, Redirect } from "react-router-dom";
+import Customer from "./components/Customer.js";
+import CustomerDetail from "./components/CustomerDetail.js";
+import CustomerUpdate from "./components/CustomerUpdate.js"
+
+import "./assets/style/style.css"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="custome-container">
+      <Switch>
+        <Redirect exact from="/" to="/customer" />
+        <Route exact path="/customer" component={Customer} key='customer'/>
+        <Route exact path="/customer/:id" component={CustomerDetail} key='customer-detail'/>
+        <Route exact path="/customer/update/:id" component={CustomerUpdate} key='customer-update'/>
+      </Switch>
     </div>
   );
 }

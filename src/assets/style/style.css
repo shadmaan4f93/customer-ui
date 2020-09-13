@@ -1,0 +1,56 @@
+.custome-container {
+	margin-top: 50px;
+	padding: 100px 200px 0px 200px;
+}
+.center{
+	text-align: center;
+}
+.header-text{
+	font-family: monospace;
+    color: #666;
+}
+
+.rdt_TableCell {
+	color: #666;
+    font-family: monospace;
+    font-size: 16px;
+}
+.rdt_TableCol {
+	color: #666 !important;
+	font-family: monospace !important;
+    font-size: 18px !important;
+}
+.backdrop {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: #000000bf;
+	padding-top: 100px;
+}
+
+.custome-modal {
+    display: block;
+	background-color: #fff;
+	border-radius: 5px;
+	max-width: 500px;
+	min-height: 300px;
+	margin: 0 auto;
+	padding: 30px;
+}
+.close-btn-custome {
+	float: right;
+    margin: 20px 10px 0px 0px;
+}
+
+.float-right{
+	float: right;
+}
+
+.m-r-7{
+	margin-right: 7px !important;
+}
+.m-t-20{
+	margin-top: 20px;
+}
